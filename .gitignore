@@ -1,0 +1,103 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data files (large)
+*.csv
+*.hdf5
+*.h5
+*.parquet
+data/raw/
+data/processed/
+!examples/sample_data.csv
+
+# Results (exclude from repo, regenerate via scripts)
+results/
+outputs/
+*.png
+*.jpg
+*.jpeg
+!examples/figures/*.pdf
+!examples/figures/*.png
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# LaTeX (if building locally)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Compiled extensions
+*.c
+*.cpp
+*.pyx.c
+
+# Performance profiling
+*.prof
+
+# Sensitive data
+secrets/
+credentials/
+*.key
+*.pem
+
+# Keep examples and documentation
+!examples/
+!docs/
+!README.md
+!LICENSE
+!CITATION.cff

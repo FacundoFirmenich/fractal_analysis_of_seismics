@@ -1,0 +1,49 @@
+{
+    "title": "Seismic Fractal Analysis: Multi-Planar Hierarchy Framework",
+    "description": "Python package for fractal dimension analysis of earthquake catalogs. Implements Grassberger-Procaccia correlation dimension, Bayesian dimension recovery, Rényi multifractal spectrum, topological graph structure analysis via Leiden communities, and bootstrap uncertainty quantification. Analyzes 50,010 earthquakes across Pan-American margin (2010-2025), revealing multi-planar hierarchical organization underlying apparent planar seismicity.",
+    "creators": [
+        {
+            "name": "Firmenich, Facundo",
+            "affiliation": "Centro de Estudios del Sur (CEDESUR), Argentina / Universitat de Barcelona, Spain",
+            "orcid": "0009-0002-6578-3811"
+        },
+        {
+            "name": "Firmenich, Pau",
+            "affiliation": "Centro de Estudios del Sur (CEDESUR), Argentina"
+        },
+        {
+            "name": "Firmenich, León",
+            "affiliation": "Centro de Estudios del Sur (CEDESUR), Argentina"
+        }
+    ],
+    "keywords": [
+        "seismology",
+        "fractal-dimension",
+        "correlation-dimension",
+        "bayesian-inference",
+        "multifractal-spectrum",
+        "spatial-statistics",
+        "hierarchical-organization",
+        "earthquake-patterns",
+        "usgs-data",
+        "pan-american-margin",
+        "topological-graph-structure"
+    ],
+    "license": "GPL-3.0-or-later",
+    "upload_type": "software",
+    "access_right": "open",
+    "related_identifiers": [
+        {
+            "identifier": "10.1016/0167-2789(83)90298-1",
+            "relation": "cites",
+            "scheme": "doi"
+        }
+    ],
+    "references": [
+        "Grassberger, P., & Procaccia, I. (1983). Measuring the strangeness of strange attractors. Physica D, 9(1-2), 189-208.",
+        "Kagan, Y. Y. (2007). Earthquake spatial distribution: the correlation dimension. Geophysical Journal International, 168(3), 1175-1194.",
+        "Wiemer, S., & Wyss, M. (2000). Minimum magnitude of completeness in earthquake catalogs. Bulletin of the Seismological Society of America, 90(4), 859-869."
+    ],
+    "version": "1.0.0",
+    "language": "eng"
+}

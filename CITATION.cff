@@ -1,0 +1,102 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Seismic Fractal Analysis: Multi-Planar Hierarchy Framework"
+version: 1.0.0
+date-released: 2025-12-08
+abstract: |
+  Python framework for fractal dimension analysis of earthquake spatial distributions.
+  Implements Grassberger-Procaccia correlation dimension estimation, Rényi multifractal
+  spectrum analysis, topological graph structure detection via Leiden clustering, and
+  bootstrap uncertainty quantification. Includes Bayesian methods for observational bias
+  correction and adaptive parameter selection. Designed for analyzing large seismic catalogs
+  (N>5,000 events) with consumer hardware accessibility. Three-tier deployment: web app,
+  Colab notebook, and Python package.
+
+authors:
+  - family-names: "Firmenich"
+    given-names: "Facundo"
+    orcid: "https://orcid.org/0009-0002-6578-3811"
+    email: "f.firmenich@cedesur.org"
+    affiliation: "Centro de Estudios del Sur (CEDESUR), Argentina / Universitat de Barcelona, Spain"
+  - family-names: "Firmenich"
+    given-names: "Pau"
+    affiliation: "Centro de Estudios del Sur (CEDESUR), Argentina"
+  - family-names: "Firmenich"
+    given-names: "León"
+    affiliation: "Centro de Estudios del Sur (CEDESUR), Argentina"
+
+repository-code: "https://github.com/FacundoFirmenich/fractal_analysis_of_seismics"
+url: "https://github.com/FacundoFirmenich/fractal_analysis_of_seismics"
+license: GPL-3.0-or-later
+
+keywords:
+  - seismology
+  - fractal-analysis
+  - correlation-dimension
+  - bayesian-inference
+  - multifractal-spectrum
+  - spatial-statistics
+  - topological-graph-structure
+  - hierarchical-organization
+  - renyi-dimension
+  - usgs-data
+  - pan-american-margin
+  - cosmic-web-analogy
+
+references:
+  - type: article
+    title: "Measuring the strangeness of strange attractors"
+    authors:
+      - family-names: "Grassberger"
+        given-names: "Peter"
+      - family-names: "Procaccia"
+        given-names: "Itamar"
+    journal: "Physica D: Nonlinear Phenomena"
+    volume: 9
+    issue: 1-2
+    start: 189
+    end: 208
+    year: 1983
+    doi: "10.1016/0167-2789(83)90298-1"
+  
+  - type: article
+    title: "Fractal dimension of fault systems in Japan"
+    authors:
+      - family-names: "Hirata"
+        given-names: "Takashi"
+    journal: "Pure and Applied Geophysics"
+    volume: 131
+    issue: 1-2
+    start: 157
+    end: 170
+    year: 1989
+    doi: "10.1007/BF00874485"
+  
+  - type: article
+    title: "Earthquake spatial distribution: the correlation dimension"
+    authors:
+      - family-names: "Kagan"
+        given-names: "Yan Y."
+    journal: "Geophysical Journal International"
+    volume: 168
+    issue: 3
+    start: 1175
+    end: 1194
+    year: 2007
+    doi: "10.1111/j.1365-246X.2006.03251.x"
+  
+  - type: article
+    title: "Minimum magnitude of completeness in earthquake catalogs"
+    authors:
+      - family-names: "Wiemer"
+        given-names: "Stefan"
+      - family-names: "Wyss"
+        given-names: "Max"
+    journal: "Bulletin of the Seismological Society of America"
+    volume: 90
+    issue: 4
+    start: 859
+    end: 869
+    year: 2000
+    doi: "10.1785/0119990114"
