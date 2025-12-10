@@ -1,171 +1,100 @@
-# Pan-American Seismic Fractal Analysis - Documentation
-
-**Version**: 1.0.0  
-**Last Updated**: 2025-12-08
-
----
-
-## 📋 Overview
-
-This framework provides a comprehensive Bayesian fractal analysis toolkit for seismicity characterization across diverse tectonic settings. It implements:
-
-- **Grassberger-Procaccia correlation dimension (D₂)** with Ripley edge corrections
-- **Rényi spectrum (D₀, D₁, D₂)** for hierarchical organization assessment
-- **Topological Graph Structure (TGS)** analysis via k-NN networks
-- **Bayesian D₃ transformation** for intrinsic dimension estimation
-- **Adaptive parameter selection** via Thompson Sampling reinforcement learning
-- **Uncertainty quantification** through bootstrap resampling (n=200)
-
-**Key Features**:
-- ✅ Automated USGS data acquisition
-- ✅ Reproducible Bayesian inference
-- ✅ Multi-scale organizational metrics
-- ✅ Publication-ready visualizations
-- ✅ 3-tier deployment (Streamlit/Colab/PyPI)
-
----
-
-## 🚀 Quick Start
-
-### Installation
-
+# Seismic Fractal Analysis
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+Python framework for fractal dimension analysis of earthquake spatial distributions.
+## Features
+- **Grassberger-Procaccia correlation dimension** estimation with Theil-Sen robust regression
+- **Rényi multifractal spectrum** analysis (D₀, D₁, D₂)
+- **Topological graph structure** detection via Leiden community clustering
+- **Bootstrap uncertainty quantification** with user-configurable iterations
+- **Bayesian methods** for observational bias correction
+- **Three-tier deployment**: web app, Colab notebook, Python package
+## Installation
 ```bash
-# Clone repository
-git clone https://github.com/[USERNAME]/PanAmericanPaper.git
-cd PanAmericanPaper
-
-# Install dependencies
+git clone [https://github.com/FacundoFirmenich/fractal_analysis_of_seismics.git](https://github.com/FacundoFirmenich/fractal_analysis_of_seismics.git)
+cd fractal_analysis_of_seismics
 pip install -r requirements.txt
-
-# Optional: performance accelerators
-pip install numba  # 3-20× speedup
-```
-
-### Basic Usage
-
-```python
+Optional Performance Accelerators
+bash
+pip install numba  # 3-20× speedup for numerical operations
+Quick Start
+python
 from sfa.core import FractalDimensionEstimator
-from sfa.data import SeismicDataAcquisition
-
-# Fetch data
-data_acq = SeismicDataAcquisition()
-events = data_acq.fetch_usgs_catalog(
-    bounds=(32, 38, -122, -115),  # San Andreas
-    depth_range=(0, 30),
-    min_magnitude=2.4,
-    start_date="2010-01-01",
-    end_date="2025-11-22"
+from sfa.data import fetch_usgs_catalog
+from sfa.utils import geographic_to_metric
+# Fetch earthquake data from USGS
+catalog = fetch_usgs_catalog(
+    lat=37.0, 
+    lon=-122.0, 
+    radius_km=200,
+    start_date="2010-01-01"
 )
-
-# Normalize coordinates
-coords = data_acq.normalize_coordinates(
-    events['latitude'].values,
-    events['longitude'].values,
-    events['depth'].values
+# Convert to metric coordinates
+coords = geographic_to_metric(
+    catalog['latitude'],
+    catalog['longitude'],
+    catalog['depth']
 )
-
-# Estimate D₂
+# Estimate fractal dimension
 estimator = FractalDimensionEstimator()
-d2, d2_sem = estimator.compute_dimension(
+d2, sem = estimator.compute_gp_dimension(
     coords,
-    method='gp',  # Grassberger-Procaccia
     bootstrap_iterations=200
 )
+print(f"Correlation dimension: D₂ = {d2:.3f} ± {sem:.3f}")
+Web Interface
+Launch the interactive Streamlit dashboard:
 
-print(f"D₂ = {d2:.3f} ± {d2_sem:.3f}")
-```
+bash
+streamlit run streamlit_app.py
+Google Colab
+Open the complete analysis notebook:
 
-**Output**: `D₂ = 2.072 ± 0.001`
+Documentation
+API Reference
+ - Complete module documentation
+Mathematical Appendix
+ - Coordinate transformations and algorithms
+Future Enhancements
+ - Roadmap and planned features
+Testing
+Run the test suite:
 
----
+bash
+pytest tests/ -v
+Test coverage:
 
-## 📚 Documentation Structure
+Unit tests: Core module functionality
+Integration tests: End-to-end workflows
+Scientific validation: Synthetic geometries (1D, 2D, 3D)
+Data Source
+All seismic data sourced from: United States Geological Survey (USGS) ComCat Earthquake Catalog
 
-- **[API Reference](API.md)**: Complete module/class/function documentation
-- **[Tutorial](TUTORIAL.md)**: Step-by-step walkthrough
-- **[Methods](METHODS.md)**: Mathematical foundations
-- **[Examples](EXAMPLES.md)**: Case studies (Pan-American analysis)
+Citation
+If you use this software in your research, please cite:
 
----
-
-## 🎯 Use Cases
-
-### 1. Regional Tectonic Comparison
-```python
-from scripts.run_pan_american_7_regions import main
-results_df = main()  # Analyzes 7 Pan-American regions
-```
-
-### 2. Hierarchical Organization
-```python
-from sfa.multifractal import MultifractalAnalyzer
-analyzer = MultifractalAnalyzer()
-d0, d1, d2 = analyzer.compute_renyi_spectrum(coords)
-H = d1 - d0  # Hierarchical Index
-```
-
-### 3. Topological Structure
-```python
-from sfa.graph_tgs import SeismicGraphTGS
-tgs = SeismicGraphTGS()
-communities, d_graph = tgs.analyze(coords)
-```
-
----
-
-## 🔬 Scientific Validation
-
-Framework validated via:
-- ✅ Synthetic 1D/2D/3D geometries (error <6%)
-- ✅ Temporal stability (ΔD₂ < 0.05 over 15 years)
-- ✅ Declustering sensitivity (Gardner-Knopoff method)
-- ✅ Literature cross-validation (Kagan 2007, Hirata 1989)
-
-**Key Results**:
-- Pan-American D₂ range: **2.07-2.57** (multi-planar intermediate)
-- Rényi hierarchy detected in 4/7 regions (Caribbean H=+0.182 MAX)
-- Intrinsic volumetric structure (D₃=3.00) in 5/6 regions
-
----
-
-## 📖 Citation
-
-If you use this framework in your research, please cite:
-
-```bibtex
-@software{panamfractal2025,
-  title = {Pan-American Seismic Fractal Analysis Framework},
-  author = {[Authors]},
+bibtex
+@software{seismic_fractal_analysis,
+  author = {Firmenich, Facundo and Firmenich, Pau and Firmenich, León},
+  title = {Seismic Fractal Analysis: Multi-Planar Hierarchy Framework},
   year = {2025},
-  url = {https://github.com/[USERNAME]/PanAmericanPaper},
-  version = {1.0.0}
+  version = {1.0.0},
+  url = {[https://github.com/FacundoFirmenich/fractal_analysis_of_seismics](https://github.com/FacundoFirmenich/fractal_analysis_of_seismics)}
 }
-```
+License
+GNU General Public License v3.0 (GPLv3) - see 
+LICENSE
 
----
+Authors
+Facundo Firmenich - Lead Developer - ORCID: 0009-0002-6578-3811
+Pau Firmenich
+León Firmenich
+Institution: Centro de Estudios del Sur (CEDESUR), Argentina / Universitat de Barcelona, Spain
 
-## 🤝 Contributing
+Acknowledgments
+USGS for maintaining the FDSN web service and providing open seismic data
+Open-source scientific Python community (NumPy, SciPy, Pandas, Matplotlib, NetworkX)
+Contact
+For questions or collaboration: 
+f.firmenich@cedesur.org
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines.
-
----
-
-## 📄 License
-
-GNU General Public License v3.0 (GPLv3) - see [LICENSE](../LICENSE)
-
----
-
-## 🆘 Support
-
-- **Issues**: [GitHub Issues](https://github.com/[USERNAME]/PanAmericanPaper/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/[USERNAME]/PanAmericanPaper/discussions)
-- **Email**: [contact email]
-
----
-
-## 🌟 Acknowledgments
-
-- USGS for maintaining the ComCat earthquake catalog
-- Open-source scientific Python community (NumPy, SciPy, Pandas, Matplotlib)
-- [Funding sources]
